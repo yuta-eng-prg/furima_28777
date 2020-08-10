@@ -47,7 +47,7 @@ Things you may want to cover:
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | name                | string     | null: false                    |
-| description         | string     | null: false                    |
+| description         | text       | null: false                    |
 | category            | integer    | null: false                    |
 | status              | integer    | null: false                    |
 | shipping_fee_burden | integer    | null: false                    |
