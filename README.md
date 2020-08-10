@@ -49,7 +49,7 @@ Things you may want to cover:
 | name                | string     | null: false                    |
 | description         | string     | null: false                    |
 | category            | integer    | null: false                    |
-| item_status         | integer    | null: false                    |
+| status              | integer    | null: false                    |
 | shipping_fee_burden | integer    | null: false                    |
 | shipping_region     | integer    | null: false                    |
 | days_until_shipping | integer    | null: false                    |
