@@ -4,15 +4,20 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :email, uniqueness: { case_sensitive: true }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-  validates :password, length: { minimum: 6 }, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/ }
+  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/.freeze
+  ZENKAKU_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
+  KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
+
+  validates :email, uniqueness: { case_sensitive: true }, format: { with: EMAIL_REGEX }
+  validates :password, format: { with: PASSWORD_REGEX }
 
   with_options presence: true do
     validates :nickname, uniqueness: { case_sensitive: true }
-    validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-    validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-    validates :last_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
-    validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
+    validates :last_name, format: { with: ZENKAKU_REGEX }
+    validates :first_name, format: { with: ZENKAKU_REGEX }
+    validates :last_name_kana, format: { with: KANA_REGEX }
+    validates :first_name_kana, format: { with: KANA_REGEX }
     validates :birthday
   end
 end
