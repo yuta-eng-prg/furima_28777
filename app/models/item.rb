@@ -17,10 +17,6 @@ class Item < ApplicationRecord
     validates :shipping_fee_burden_id, numericality: { other_than: 1 }
     validates :shipping_region_id, numericality: { other_than: 1 }
     validates :days_until_shipping_id, numericality: { other_than: 1 }
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   end
-
-
-
-
 end

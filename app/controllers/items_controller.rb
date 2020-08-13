@@ -16,7 +16,6 @@ class ItemsController < ApplicationController
     end
   end
 
-
   private
 
   def item_params
@@ -33,5 +32,4 @@ class ItemsController < ApplicationController
       :user_id
     ).merge(user_id: current_user.id)
   end
-
 end
