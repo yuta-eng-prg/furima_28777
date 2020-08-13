@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   end
 
   def new
+    authenticate_user!
     @item = Item.new
   end
 
@@ -28,6 +29,7 @@ class ItemsController < ApplicationController
       :shipping_fee_burden_id,
       :shipping_region_id,
       :days_until_shipping_id,
+      :price,
       :user_id
     ).merge(user_id: current_user.id)
   end
