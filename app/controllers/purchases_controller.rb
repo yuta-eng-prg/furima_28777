@@ -1,4 +1,6 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :item_not_purchase
 
   def index
     @item = Item.find(params[:item_id])
@@ -12,6 +14,15 @@ class PurchasesController < ApplicationController
       return redirect_to root_path
     else
       render 'index'
+    end
+  end
+
+  def item_not_purchase
+    @item = Item.find(params[:item_id])
+    if Purchase.find_by(item_id: @item.id)
+      redirect_to root_path
+    elsif @item.user_id == current_user.id
+      redirect_to root_path
     end
   end
 
