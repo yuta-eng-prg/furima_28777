@@ -13,7 +13,7 @@ class PurchasesController < ApplicationController
     if @purchase.valid?
       pay_item
       @purchase.save
-      redirect_to root_path
+      return redirect_to root_path
     else
       render 'new'
     end
@@ -29,7 +29,7 @@ class PurchasesController < ApplicationController
   end
 
   private
-
+  
   def purchase_params
     params.require(:purchase_shipping_address).permit(
       :user_id,
@@ -46,11 +46,12 @@ class PurchasesController < ApplicationController
 
   def pay_item
     item = Item.find(params[:item_id])
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: item.price,
       card: params[:token],
       currency: 'jpy'
     )
   end
+
 end
