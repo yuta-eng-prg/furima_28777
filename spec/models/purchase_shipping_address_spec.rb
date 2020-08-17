@@ -20,7 +20,7 @@ RSpec.describe PurchaseShippingAddress, type: :model do
       it 'postal_codeにハイフンがないと登録できない' do
         @purchase_shipping_address.postal_code = '1111111'
         @purchase_shipping_address.valid?
-        expect(@purchase_shipping_address.errors.full_messages).to include("Postal code is invalid")
+        expect(@purchase_shipping_address.errors.full_messages).to include('Postal code is invalid')
       end
       it 'prefecture_idが空だと登録できない' do
         @purchase_shipping_address.prefecture_id = ''
@@ -45,10 +45,8 @@ RSpec.describe PurchaseShippingAddress, type: :model do
       it 'phone_numberが12桁以上だと登録できない' do
         @purchase_shipping_address.phone_number = '123456789012'
         @purchase_shipping_address.valid?
-        expect(@purchase_shipping_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@purchase_shipping_address.errors.full_messages).to include('Phone number is invalid')
       end
     end
-    
   end
-
 end

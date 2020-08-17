@@ -11,7 +11,7 @@ class PurchaseShippingAddress
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :city
     validates :house_number
-    validates :phone_number,  format: { with: PHONE_NUMBER_REGEX }
+    validates :phone_number, format: { with: PHONE_NUMBER_REGEX }
   end
 
   def save
@@ -26,5 +26,4 @@ class PurchaseShippingAddress
       purchase_id: purchase.id
     )
   end
-
 end
