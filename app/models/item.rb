@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_region
   belongs_to_active_hash :days_until_shipping
   belongs_to :user
+  has_one :purchase
 
   with_options presence: true do
     validates :image
