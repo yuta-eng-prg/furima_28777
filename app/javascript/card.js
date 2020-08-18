@@ -1,7 +1,7 @@
 const pay = () => {
   const PAYJP_PUBLIC_KEY = process.env.PAYJP_PUBLIC_KEY;
   Payjp.setPublicKey(PAYJP_PUBLIC_KEY);
-  console.log((PAYJP_PUBLIC_KEY)
+  console.log(PAYJP_PUBLIC_KEY)
   const form = document.getElementById("charge-form");
 
   if (form.getAttribute("data-load") != null) {
