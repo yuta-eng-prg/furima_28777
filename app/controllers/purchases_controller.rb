@@ -5,6 +5,7 @@ class PurchasesController < ApplicationController
 
   def new
     @purchase = PurchaseShippingAddress.new
+    @order = OrderDelivery.new
   end
 
   def create
